@@ -1,0 +1,3 @@
+global:
+  not-player: "You must be a player to use this command."
+  no-permission: "You do not have permission to use this command."

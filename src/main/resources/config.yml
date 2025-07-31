@@ -1,0 +1,16 @@
+anti-spam:
+  enabled: true
+  cooldown: 3
+  block-duplicates: true
+  max-caps-percentage: 60
+  message: "&c[AntiSpam] &fPlease, do not spam the chat. Wait %cooldown% seconds before sending another message."
+
+word-filter:
+  enabled: true
+  bypass-permission: "echochat.filter.bypass"
+  warning-message: "&cNo puedes usar esa palabra."
+  replace-with-asterisks: true
+  replacement-char: "*"
+  blocked-words:
+    - "bitch"
+    - "n-word"
