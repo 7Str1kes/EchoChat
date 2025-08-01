@@ -1,4 +1,5 @@
 anti-spam:
+  bypass-permission: "echochat.antispam.bypass"
   enabled: true
   cooldown: 3
   block-duplicates: true
@@ -8,7 +9,7 @@ anti-spam:
 word-filter:
   enabled: true
   bypass-permission: "echochat.filter.bypass"
-  warning-message: "&cNo puedes usar esa palabra."
+  message: "&cYour message contains blocked words."
   replace-with-asterisks: true
   replacement-char: "*"
   blocked-words:

@@ -25,6 +25,8 @@ public class AntiSpamListener extends Module<AntiSpamManager> {
     public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
 
+        if (player.hasPermission(getManager().getBypassPermission())) return;
+
         if (getManager().isSpamming(player, event.getMessage())) {
             event.setCancelled(true);
             String cooldownMsg = getInstance().getConfig().getString("anti-spam.message", "&cEspera %cooldown% segundos antes de hablar de nuevo.")

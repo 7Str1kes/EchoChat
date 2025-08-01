@@ -23,10 +23,12 @@ import java.util.UUID;
 public class AntiSpamManager extends Manager {
 
     private final Map<UUID, Long> lastMessageTimes = new HashMap<>();
+    private boolean antispamEnabled;
+    private String bypassPermission;
+    private String warningMessage;
     private int cooldownSeconds;
     private boolean blockDuplicateMessages;
     private int maxCapsPercentage;
-    private boolean enabled;
 
     public AntiSpamManager(EchoChat instance) {
         super(instance);
@@ -36,14 +38,16 @@ public class AntiSpamManager extends Manager {
     public void reload() {
         ConfigFile config = Manager.getConfigFile();
 
-        this.enabled = config.getBoolean("anti-spam.enabled", true);
+        this.antispamEnabled = config.getBoolean("anti-spam.enabled", true);
+        this.bypassPermission = config.getString("anti-spam.bypass-permission", "echochat.antispam.bypass");
+        this.warningMessage = config.getString("anti-spam.message", "&cPlease do not spam the chat.");
         this.cooldownSeconds = config.getInt("anti-spam.cooldown", 3);
         this.blockDuplicateMessages = config.getBoolean("anti-spam.block-duplicates", true);
         this.maxCapsPercentage = config.getInt("anti-spam.max-caps-percentage", 60);
     }
 
     public boolean isSpamming(Player player, String message) {
-        if (!enabled) return false;
+        if (!antispamEnabled) return false;
 
         UUID uuid = player.getUniqueId();
         long currentTime = System.currentTimeMillis();

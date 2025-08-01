@@ -36,7 +36,7 @@ public class FilterManager extends Manager {
 
         this.filterEnabled = config.getBoolean("word-filter.enabled", true);
         this.bypassPermission = config.getString("word-filter.bypass-permission", "echochat.filter.bypass");
-        this.warningMessage = config.getString("word-filter.warning-message", "&cNo puedes usar esa palabra.");
+        this.warningMessage = config.getString("word-filter.message", "&cYour message contains blocked words.");
         this.replaceWithAsterisks = config.getBoolean("word-filter.replace-with-asterisks", true);
         this.replacementChar = config.getString("word-filter.replacement-char", "*");
 

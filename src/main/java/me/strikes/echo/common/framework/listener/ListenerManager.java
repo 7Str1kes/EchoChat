@@ -4,6 +4,8 @@ import lombok.Getter;
 import me.strikes.echo.EchoChat;
 import me.strikes.echo.common.module.Manager;
 import me.strikes.echo.core.listener.MainListener;
+import me.strikes.echo.modules.antispam.listener.AntiSpamListener;
+import me.strikes.echo.modules.filter.listener.FilterListener;
 import org.bukkit.event.Listener;
 
 import java.util.Arrays;
@@ -24,7 +26,9 @@ public class ListenerManager extends Manager {
         super(instance);
 
         List<Listener> listeners = Arrays.asList(
-                new MainListener(this)
+                new MainListener(this),
+                new FilterListener(getInstance().getFilterManager()),
+                new AntiSpamListener(getInstance().getAntiSpamManager())
         );
 
         registerListener(listeners.toArray(new Listener[0]));
